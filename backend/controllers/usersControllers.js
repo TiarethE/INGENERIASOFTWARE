@@ -24,7 +24,7 @@ const login = asyncHandler (async (req, res) => {
         throw new Error('Credenciales inválidas')
     }
         
-});
+})
 
 const register = asyncHandler( async(req, res) => {
     const {nombre, email, password} = req.body
@@ -35,6 +35,7 @@ const register = asyncHandler( async(req, res) => {
     }
     //Verificar si el usuario existe en la db 
     const userExists = await User.findOne({email})
+   
     if(userExists){
         res.status(400)
         throw new Error('El usuario ya existe')
@@ -76,7 +77,5 @@ const generateToken = (id) => {
     })
 }
 module.exports = {
-    login,
-    register,
-    data,
+    login,register,data,
 }

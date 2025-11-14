@@ -54,7 +54,7 @@ const updateTareas = asyncHandler (async (req, res) => {
         throw new Error('Usuario no autorizado ')
         } else { 
             await tarea.deleteOne()
-            res.status(200).json({id: req.params.id, mensaje : 'Tarea eliminada'})
+            res.status(200).json({id: req.params.id})
         }
    
     })

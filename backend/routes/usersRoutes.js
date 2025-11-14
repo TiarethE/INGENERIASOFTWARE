@@ -8,6 +8,6 @@ router.post('/login', login)
 router.post('/register', register)
 
 //endpoint privados
-router.get('/data', data)
+router.get('/data',protect, data)
 
 module.exports = router

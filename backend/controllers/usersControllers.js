@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/usersModel')
 
-const login =asyncHandler (async (req, res) => {
+const login = asyncHandler (async (req, res) => {
 
     //destructuramos el body que pasamos en el request 
     const {email, password} = req.body
@@ -27,7 +27,6 @@ const login =asyncHandler (async (req, res) => {
 });
 
 const register = asyncHandler( async(req, res) => {
-    res.status(200).json({message: 'register'});
     const {nombre, email, password} = req.body
 
     if (!nombre || !email || !password) {
@@ -68,7 +67,8 @@ const register = asyncHandler( async(req, res) => {
 })
 
 const data = (req, res) => {
-    res.status(200).json({message: 'data'});
+    res.status(200).json(req.user)
+    
 }
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET, {

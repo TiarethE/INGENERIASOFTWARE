@@ -1,4 +1,4 @@
-const asyncHandler = require('express-async-handler');
+const asyncHandler = require('express-async-handler')
 const Tarea = require('../models/tareasModel')
 
 
@@ -39,7 +39,7 @@ const updateTareas = asyncHandler (async (req, res) => {
     }
 })
     
-    const deleteTareas = asyncHandler (async (req, res) => {
+    const deleteTareas = asyncHandler (async(req, res)=> {
    
         const tarea = await Tarea.findById(req.params.id)
 

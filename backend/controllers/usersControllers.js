@@ -17,7 +17,7 @@ const login = asyncHandle( async(req, res) => {
             _id: user.id,
             nombre: user.nombre,
             email: user.email,
-            token: generarToken(user._id)
+            token: generarToken(user.id)
         })
     } else {
         res.status(401)
@@ -34,9 +34,9 @@ const register = asyncHandler( async(req, res) => {
         throw new Error('Faltan datos')
     }
     //Verificar si el usuario existe en la db 
-    const userExists = await User.findOne({email})
+    const userExiste = await User.findOne({email})
    
-    if(userExists){
+    if(userExiste){
         res.status(400)
         throw new Error('El usuario ya existe')
     } else {
@@ -77,5 +77,5 @@ const generateToken = (id) => {
     })
 }
 module.exports = {
-    login,register,data
+    login, register, data
 }

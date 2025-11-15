@@ -1,18 +1,18 @@
-const moongose = require('mongoose')
+const mongoose = require('mongoose')
 
-const userSchema = moongose.Schema({
+const userSchema = mongoose.Schema({
     nombre: {
         type: String,
-        required: [true, 'Por favor teclea tu nombre']
+        required : [true, 'Por favor teclea tu nombre']
     },
     email: {
         type: String,
-        required: [true, 'Por favor teclea tu email'],
+        required : [true, 'Por favor teclea tu email'],
         unique: true
     },
     password: {
         type: String,
-        required: [true, 'Por favor teclea tu contraseña']
+        required : [true, 'Por favor teclea tu contraseña']
     },
     esAdmin: {
         type: Boolean,
@@ -20,4 +20,4 @@ const userSchema = moongose.Schema({
     }
 
 })
-module.exports = moongose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema)

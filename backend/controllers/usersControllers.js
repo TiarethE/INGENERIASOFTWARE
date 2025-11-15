@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/usersModel')
 
-const login = asyncHandle( async(req, res) => {
+const login = asyncHandler( async(req, res) => {
 
     //destructuramos el body que pasamos en el request 
     const {email, password} = req.body

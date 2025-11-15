@@ -1,13 +1,13 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/usersModel');
+const jwt = require('jsonwebtoken')
+const User = require('../models/usersModel')
 
-const protect = async (req, res, next) => {
+const protect = async(req, res, next) => {
     //definir la variable token
-        let token;
+        let token
 
-        if ( req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+        if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
-        token = req.headers.authorization.split(' ')[1];
+        token = req.headers.authorization.split(' ')[1]
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         //busco el usuario con el id del token 
@@ -17,15 +17,17 @@ const protect = async (req, res, next) => {
 
         
     } catch (error) {
-        console.log(error);
-        res.status(401);
-        throw new Error('Acceso no autorizado');
+        console.log(error)
+        res.status(401)
+        throw new Error('Acceso no autorizado')
     
     }  
-} if (!token) {
-    res.status(401);
-    throw new Error('Acceso no autorizado, no proporcionaste el token');
-    
-}
+
 } 
-module.exports = {protect};
+if (!token) {
+    res.status(401);
+    throw new Error('Acceso no autorizado, no proporcionaste el token')
+    
+    }
+} 
+module.exports = {protect}

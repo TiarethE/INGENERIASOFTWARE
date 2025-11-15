@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/usersModel')
 
-const login = asyncHandler (async (req, res) => {
+const login = asyncHandle( async(req, res) => {
 
     //destructuramos el body que pasamos en el request 
     const {email, password} = req.body
@@ -17,7 +17,7 @@ const login = asyncHandler (async (req, res) => {
             _id: user.id,
             nombre: user.nombre,
             email: user.email,
-            token: generateToken(user._id)
+            token: generarToken(user._id)
         })
     } else {
         res.status(401)
@@ -29,7 +29,7 @@ const login = asyncHandler (async (req, res) => {
 const register = asyncHandler( async(req, res) => {
     const {nombre, email, password} = req.body
 
-    if (!nombre || !email || !password) {
+    if (!nombre || !email || !password){
         res.status(400)
         throw new Error('Faltan datos')
     }
@@ -77,5 +77,5 @@ const generateToken = (id) => {
     })
 }
 module.exports = {
-    login,register,data,
+    login,register,data
 }

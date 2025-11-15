@@ -11,7 +11,7 @@ const tareaSchema = mongoose.Schema({
         required: [true, 'Por favor teclear una tarea'],
     }
 }, {
-    timestamps: true,               
+    timestamps: true              
 })
 
 module.exports = mongoose.model('Tarea', tareaSchema)
